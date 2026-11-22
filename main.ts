@@ -37,8 +37,13 @@ function main(): void {
     throw new Error('main.ts: screenshots/ is missing from the repository');
   }
   // Start from a clean output directory so stale files never leak in.
-  rmSync(OUTPUT_DIR, { recursive: true, force: true });
+  // Clear the directory's CONTENTS, not the directory itself: under the
+  // grader /output's parent is not writable by uid 65534, so removing
+  // /output itself throws EACCES and exits 1.
   mkdirSync(OUTPUT_DIR, { recursive: true });
+  for (const entry of readdirSync(OUTPUT_DIR)) {
+    rmSync(join(OUTPUT_DIR, entry), { recursive: true, force: true });
+  }
   copyTreeInto(gameDir, join(OUTPUT_DIR, 'game'));
   copyTreeInto(shotsDir, join(OUTPUT_DIR, 'screenshots'));
   const dossier = buildDossier(OUTPUT_DIR, {
