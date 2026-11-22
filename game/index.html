@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Last Lantern — a stealth heist</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #0a0d14; height: 100%; }
+  body { display: flex; align-items: center; justify-content: center; font-family: Georgia, 'Times New Roman', serif; }
+  #wrap { position: relative; width: min(1280px, 100vw); }
+  canvas { display: block; width: 100%; height: auto; background: #101623; touch-action: none; cursor: crosshair; }
+  #hint { color: #8a93a8; font-size: 13px; text-align: center; padding: 8px 12px 0; line-height: 1.5; }
+  #hint b { color: #e8c96a; font-weight: normal; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="1280" height="800"></canvas>
+  <div id="hint"><b>THE LAST LANTERN</b> — steal the Ember Opal from the lighthouse vault and slip out unseen.
+    Move <b>WASD / arrows</b> · Sneak <b>Shift</b> (slow, silent) · Throw lure coin <b>Space / click</b> · Smoke <b>Q</b> · Pick up / lockpick <b>E</b> · Restart <b>R</b> · Mute <b>M</b></div>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
